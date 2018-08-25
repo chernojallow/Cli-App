@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "7082505zika",
+    password: "",
     database: "bamazon"
 });
 
@@ -42,36 +42,41 @@ var afterConnection = function () {
             type: "input",
             message: "How many UNITS of the product you want to buy",
             validate: function(value){
-                if (isNaN(value)=== false) {
+                
+                if (isNaN(value)=== false ) {
                     return true;
                 }
                 return false;
             }
-          
+        
 
         },
     ]).then(function (answer) {
   
-        var query = "SELECT  product_name, department_name, price, stock_quantity FROM products WHERE ?";
+        var query = "SELECT product_name, department_name, price, stock_quantity FROM products WHERE ?";
         connection.query(query, {item_id: answer.item_id}, function (error, results) {
-
+        
             for (var i = 0; i < results.length; i++) {
-                //var quantity = results[i].stock_quantity;
-                // if(results.length > quantity){
+               
+               
+                // if(results[i] < quantity){
                  console.log("product_name: " + results[i].product_name + " || department_name: " + results[i].department_name + " || price: " + results[i].price);
+
+                 var total = results[i].price * "5";
+                console.log("you total for" +  total);
               }
-            // else {
-           //      console.log("Insufficient amount");
-           //   }
-          //  }
+ 
+           //  else {
+             //   console.log("Insufficient amount");
+         //   }
+          // }
             //console.log("Your products id are: ");
            // if (error) throw error;
            
-    
+        
         });
-
-
-        // tellID();
+   
+         // tellID();
        // }
        
     });
@@ -82,23 +87,9 @@ afterConnection();
 
 
 
-/*
-var tellID = function () {
-    var query = "SELECT  product_name, department_name, price, stock_quantity FROM products WHERE ?";
-    connection.query(query, {item_id: answer.item_id },function (error, results) {
-
-      console.log("Your products id are: ");
-    
-        if (error) throw error;
-        if (results.length > 0) {
-            console.log(results);
-        }
-        else {
-            console.log("not found");
-        }
 
 
-    });
-}
 
-*/
+
+//tellID();
+
