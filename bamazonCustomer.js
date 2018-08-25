@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "",
+    password: "7082505zika",
     database: "bamazon"
 });
 
@@ -25,10 +25,10 @@ var afterConnection = function () {
         //connection.end();
 
     inquirer.prompt([
-        {
+        {   name: "item_id",
             type: "input",
             message: "What is the ID of the product you want to buy ?",
-            name: "userChoice",
+           
             validate: function(value){
                 if (isNaN(value) === false){
                     return true;
@@ -38,27 +38,41 @@ var afterConnection = function () {
 
         },
         {
+            name: "stock_quantity",
             type: "input",
             message: "How many UNITS of the product you want to buy",
-            name: "confirmChoice",
             validate: function(value){
                 if (isNaN(value)=== false) {
                     return true;
                 }
                 return false;
             }
+          
 
         },
-    ]).then(function (response) {
-        var userChoice = response.userChoice;
-        var confirmChoice = response.confirmChoice;
+    ]).then(function (answer) {
+  
+        var query = "SELECT  product_name, department_name, price, stock_quantity FROM products WHERE ?";
+        connection.query(query, {item_id: answer.item_id}, function (error, results) {
 
-        if (userChoice) {
-            console.log(" List of products: ");
-           // afterConnection();
+            for (var i = 0; i < results.length; i++) {
+                //var quantity = results[i].stock_quantity;
+                // if(results.length > quantity){
+                 console.log("product_name: " + results[i].product_name + " || department_name: " + results[i].department_name + " || price: " + results[i].price);
+              }
+            // else {
+           //      console.log("Insufficient amount");
+           //   }
+          //  }
+            //console.log("Your products id are: ");
+           // if (error) throw error;
+           
+    
+        });
 
-           tellID();
-        }
+
+        // tellID();
+       // }
        
     });
 });
@@ -67,11 +81,14 @@ var afterConnection = function () {
 afterConnection();
 
 
+
+/*
 var tellID = function () {
-    connection.query("SELECT * FROM products WHERE item_id =2", function (error, results) {
+    var query = "SELECT  product_name, department_name, price, stock_quantity FROM products WHERE ?";
+    connection.query(query, {item_id: answer.item_id },function (error, results) {
 
-        console.log("Your products id are: ");
-
+      console.log("Your products id are: ");
+    
         if (error) throw error;
         if (results.length > 0) {
             console.log(results);
@@ -84,3 +101,4 @@ var tellID = function () {
     });
 }
 
+*/
