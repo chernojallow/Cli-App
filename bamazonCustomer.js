@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "",
+    password: "7082505zika",
     database: "bamazon"
 });
 
@@ -42,14 +42,12 @@ var afterConnection = function () {
             type: "input",
             message: "How many UNITS of the product you want to buy",
             validate: function(value){
-                
+        
                 if (isNaN(value)=== false ) {
                     return true;
                 }
                 return false;
             }
-        
-
         },
     ]).then(function (answer) {
   
@@ -58,18 +56,18 @@ var afterConnection = function () {
         
             for (var i = 0; i < results.length; i++) {
                
-               
-                // if(results[i] < quantity){
+               // console.log(answer.stock_quantity);
+               // console.log("stock_quantity", results[i].stock_quantity);
+
+                 if(answer.stock_quantity < results[i].stock_quantity){
                  console.log("product_name: " + results[i].product_name + " || department_name: " + results[i].department_name + " || price: " + results[i].price);
 
-                 var total = results[i].price * "5";
-                console.log("you total for" +  total);
               }
  
-           //  else {
-             //   console.log("Insufficient amount");
-         //   }
-          // }
+             else {
+               console.log("Insufficient amount");
+            }
+           }
             //console.log("Your products id are: ");
            // if (error) throw error;
            
