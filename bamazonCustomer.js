@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "",
+    password: "7082505zika",
     database: "bamazon"
 });
 
@@ -73,28 +73,36 @@ var afterConnection = function () {
                     else {
                         console.log("Insufficient amount");
                     }
-                    if (results[i].stock_quantity - answer.stock_quantity) {
-                        connection.query("UPDATE products SET ? WHERE ?",
+                    //if (results[i].stock_quantity - answer.stock_quantity) {
+                        if (answer.stock_quantity <= results[i].stock_quantity) {
+                        var query1=  "UPDATE products SET ? WHERE ?";
+                        connection.query( query1,
 
                             [
                                 {
-                                    stock_quantity: answer.stock_quantity
+                                    stock_quantity: results[i].stock_quantity - answer.stock_quantity
                                 },
                                 {
                                     item_id: answer.item_id
                                 }
                             ],
 
-
                             function (error, results) {
 
 
                                 console.log("==========================");
-                                console.log(results.affectedRows);
+                              //  console.log("the affected", results.affectedRows);
+                               // console.log(results);
+
+                                connection.query("SELECT * FROM products", function(error, results){
+                                    console.log("The updated results:", results);
+
+                                });
 
                             });
-                    }
-                }
+                        }
+                  }
+                
                 //console.log("Your products id are: ");
                 // if (error) throw error;
 
