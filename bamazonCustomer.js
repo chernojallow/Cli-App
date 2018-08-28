@@ -8,18 +8,9 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "7082505zika",
+    password: "",
     database: "bamazon"
 });
-
-// connection.connect(function (err) {
-// if (err) throw err;
-// console.log("connected as id" + connection.threadId);
-//connection.end();
-//  console.log("Connected");
-//afterConnection();
-
-// });
 
 var showProducts = function () {
 
@@ -72,17 +63,12 @@ var showProducts = function () {
 
                 for (var i = 0; i < results.length; i++) {
 
-                    // console.log(answer.stock_quantity);
-                    // console.log("stock_quantity", results[i].stock_quantity);
-
                     if (answer.stock_quantity <= results[i].stock_quantity) {
                         console.log("----------------------------------------");
                         var total = results[i].price * answer.stock_quantity;
                         console.log("Your total cost for", answer.stock_quantity, results[i].product_name, "is:", total);
-                        // console.log("product_name: " + results[i].product_name + " || department_name: " + results[i].department_name + " || price: " + results[i].price);
-                        // updateDatabase(); 
-                    }
 
+                    }
                     else {
                         console.log("Insufficient Amount");
                     }
@@ -103,22 +89,11 @@ var showProducts = function () {
                             function (error, results) {
 
                                 console.log("----------------------------------------");
-                                //  console.log("the affected", results.affectedRows);
-                                // console.log(results);
-
-                                //  connection.query("SELECT * FROM products", function (error, results) {
-                                // console.log("The updated results:", results);
                                 showProducts();
 
                             });
-
-                        //  });
                     }
                 }
-
-                //console.log("Your products id are: ");
-                // if (error) throw error;
-
             });
 
         });
