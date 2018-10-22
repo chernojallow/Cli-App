@@ -7,6 +7,6 @@ If the products are in stock, order can be completed and they will see the total
 
 ![alt text](screenshot/bamazon-1.png "Description goes here")
 
-![alt text](screenshots/bamazon-2.png "Description goes here")
+![alt text](screenshot/bamazon-2.png "Description goes here")
 
-![alt text](screenshots/bamazon-3.png "Description goes here")
+![alt text](screenshot/bamazon-3.png "Description goes here")
