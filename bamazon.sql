@@ -16,31 +16,31 @@ PRIMARY KEY (item_id)
 );
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Polo Shirt","Clothing", $40, 10);
+VALUES ("Polo Shirt","Clothing", 40, 10);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Air Jordan", "Shoes", $100, 15);
+VALUES ("Air Jordan", "Shoes", 100, 15);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Dining table","Furniture", $70, 12);
+VALUES ("Dining table","Furniture", 70, 12);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Samsung Tv", "Electronics", $80, 20);
+VALUES ("Samsung Tv", "Electronics", 80, 20);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Iphone 10", "Electronics", $500, 16);
+VALUES ("Iphone 10", "Electronics", 500, 16);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("TV Stand", "Furniture ", $150, 30);
+VALUES ("TV Stand", "Furniture ", 150, 30);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Spare Tire", "Auto", $30, 10);
+VALUES ("Spare Tire", "Auto", 30, 10);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("NyQuil", "Health And Beauty", $50, 25);
+VALUES ("NyQuil", "Health And Beauty", 50, 25);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Dove ", "Health And Beauty", $10, 15);
+VALUES ("Dove ", "Health And Beauty", 10, 15);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUES ("Milk", "Food", %15, 50);
+VALUES ("Milk", "Food", 15, 50);
