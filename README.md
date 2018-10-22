@@ -7,6 +7,9 @@ If the products are in stock, order can be completed and they will see the total
 
 ![alt text](screenshot/bamazon-1.png "Description goes here")
 
-![alt text](screenshot/bamazon-2.png "Description goes here")
+![alt text](screenshot/bamazon-2.png "")
 
-![alt text](screenshot/bamazon-3.png "Description goes here")
+![alt text](screenshot/bamazon-3.png "Here the we updated the SQL database to reflect the remaining quantity")
+
+This means updating the SQL database to reflect the remaining quantity.
+Once the update goes through, show the customer the total cost of their purchase.
